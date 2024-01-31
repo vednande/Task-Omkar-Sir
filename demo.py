@@ -14,7 +14,7 @@ class Sports:
         self.scoreList=[]
         
     def toss(self,input):
-        print(f"Toss won by team {input},{input} will start Serving ")
+        print(f"\nToss won by team {input}, {input} will start Serving ")
 
     def increment(self):
         pass
@@ -45,6 +45,8 @@ class Badminton(Sports):
             self.score_B +=1
         else :
             return (print("Invalid Input"))
+
+        print(f"A = {self.score_A} and B = {self.score_B}")
       
     def is_setwinner(self):
         if (self.score_A >= 21 and (self.score_A -self.score_B >=2)) :
@@ -53,7 +55,7 @@ class Badminton(Sports):
             self.score_A = 0
             self.score_B =0
             if self.set_won_A <2:
-                return print(f"{self.current_set} has been won by {self.player1} and {self.current_set + 1} is starting ")
+                return print(f"set {self.current_set} has been won by {self.player1} and set {self.current_set + 1} is now starting ")
         
         elif self.score_B >= 21 and (self.score_B -self.score_A >=2):
             self.set_won_B +=1
@@ -78,11 +80,42 @@ class Badminton(Sports):
 
 class Tennis(Sports):
 
-    def increment(self):
-        print("Increment called of Tennis")
+    def increment(self,round):
+        if round == "A":
+            self.score_A +=1
+        elif round == "B":
+            self.score_B +=1
+        else :
+            return (print("Invalid Input"))
 
-    def is_winner(self):
-        pass
+        print(f"A = {self.score_A} and B = {self.score_B}")
+
+    def is_setwinner(self):
+        if (self.score_A >= 4 and (self.score_A -self.score_B >= 2)) :
+            self.set_won_A +=1
+            # self.scoreList.append({set})
+            self.score_A = 0
+            self.score_B =0
+            if self.set_won_A <2:
+                return print(f"set {self.current_set} has been won by {self.player1} and set {self.current_set + 1} is now starting ")
+        
+        elif self.score_B >= 4 and (self.score_B -self.score_A >= 2):
+            self.set_won_B +=1
+            self.score_A = 0
+            self.score_B =0
+            if self.set_won_B <2:
+                return print(f"Set {self.current_set} has been won by {self.player2} and Set {self.current_set + 1} is starting ")
+
+        else:
+            pass
+
+    def is_overallwinner(self):
+        if self.set_won_A == 2:
+            return self.player1
+        elif self.set_won_B == 2:
+            return self.player2
+        else :
+            pass
 
 class Table_Tennis(Sports):
     
@@ -103,9 +136,9 @@ def main_func():
 
         if var == "yes" or var == "1":
 
-            print("Select Game 👇")
+            print("\nSelect Game 👇")
             
-            game = input("1. Badminton 2. Tennis 3. Table Tennis: ")
+            game = input("\n1. Badminton\n2. Tennis\n3. Table Tennis:\n")
 
             play_game = None
 
@@ -128,15 +161,17 @@ def main_func():
                 print("Invalid Choice")
 
             # calling toss 
-            toss=input("Who won the toss(A/B)")
+            toss=input("\nWho won the toss(A/B)")
             play_game.toss(toss)
 
             while True:
                 # making user decide
                 round = input("A or B: ")
+
                 play_game.increment(round)
                 play_game.is_setwinner()
                 x=play_game.is_overallwinner()
+
                 if x:
                     print(f"{x} won the game .")
                     break

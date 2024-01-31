@@ -1,6 +1,7 @@
 # gandu ved
 class Sports:
     def __init__(self,player1,player2):
+        
         self.player1=player1
         self.player2=player2
         self.score_A=0
@@ -8,19 +9,27 @@ class Sports:
         self.set_won_A =0
         self.set_won_B =0
         self.current_set=1
+
         self.scoreList=[]
+        
     def toss(self,input):
         print(f"Toss won by team {input},{input} will start Serving ")
+
     def increment(self):
         pass
+
     def tie_breaker(self):
         pass
+
     def is_setwinner(self):
         pass
+
     def is_overallwinner(self):
         pass
+
     def view_score(self):
         pass
+
 class Badminton(Sports):
     def view_score(self):
         print("Score Board  ")

@@ -9,7 +9,7 @@ class Sports:
         pass
     
     def toss(self):
-        print("Toss called")
+        print("Toss called 1")
 
     def increment(self):
         pass

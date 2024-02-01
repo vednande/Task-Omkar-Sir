@@ -200,17 +200,17 @@ class Table_Tennis(Sports):
             '''Determines the winner of a set in table tennis.'''
 
         if (self._A >= 11 and (self._A - self._B >= 2)):
-        self.set_A += 1
-        self._A = 0
-        self._B = 0
-        if self.set_A < 4:
-            return print(f"{self.current_set} won by {self.player1}.")
-    else:
-        self.set_B += 1
-        self._A = 0
-        self._B = 0
-        if self.set_B < 4:
-            return print(f"{self.current_set} won by {self.player2}.")
+            self.set_A += 1
+            self._A = 0
+            self._B = 0
+            if self.set_A < 4:
+                return print(f"{self.current_set} won by {self.player1}.")
+        else:
+            self.set_B += 1
+            self._A = 0
+            self._B = 0
+            if self.set_B < 4:
+                return print(f"{self.current_set} won by {self.player2}.")
 
     def is_overallwinner(self):
         if self.set_won_A == 2:

@@ -174,11 +174,7 @@ class Tennis(Sports):
 
 class Table_Tennis(Sports):
 
-    def view_score(self):
-        pass
-    
-    def increment(self):
-        pass
+
 
     def view_score(self):
         print("Score Board  ")

@@ -41,11 +41,9 @@ class Sports:
 
 class Badminton(Sports):
     def view_score(self):
-        print("Score Board  ")
-        print(f"{self.player1}={self.score_A}")
-        print(f"{self.player2}={self.score_B}")
-        
-
+        print("Score Board ....  ")
+        print("(SET No : [score of A, Score of B])\n")
+        print(self.scoreList)
     def increment(self,round):
         if round == "A":
             self.score_A +=1
@@ -57,21 +55,22 @@ class Badminton(Sports):
         print(f"A = {self.score_A} and B = {self.score_B}")
       
     def is_setwinner(self):
-        if (self.score_A >= 21 and (self.score_A -self.score_B >=2)) :
+        if (((self.score_A >= 21 and self.score_A<30) and (self.score_A -self.score_B >=2))) or (self.score_A == 30):
             self.set_won_A +=1
-            # self.scoreList.append({set})
+            self.scoreList.append({self.current_set:[self.score_A,self.score_B]})
+            self.current_set +=1
             self.score_A = 0
             self.score_B =0
             if self.set_won_A <2:
-                return print(f"set {self.current_set} has been won by {self.player1} and set {self.current_set + 1} is now starting ")
-        
-        elif self.score_B >= 21 and (self.score_B -self.score_A >=2):
+                return print(f" Set Completed !! Next Set Starting ...")
+        elif (((self.score_B >= 21 and self.score_B<30) and (self.score_B -self.score_A >=2))) or (self.score_B == 30):
             self.set_won_B +=1
+            self.scoreList.append({self.current_set:[self.score_A,self.score_B]})
+            self.current_set +=1
             self.score_A = 0
             self.score_B =0
             if self.set_won_B <2:
-                return print(f"Set {self.current_set} has been won by {self.player2} and Set {self.current_set + 1} is starting ")
-
+                return print(f" Set Completed !! Next Set Starting ...")
         else:
             pass
     
@@ -89,6 +88,11 @@ class Badminton(Sports):
     VED NANDE CODE GOES HERE 👇
 '''
 class Tennis(Sports):
+
+    def view_score(self):
+        print("Score Board ....  ")
+        print("(SET No : [score of A, Score of B])\n")
+        print(self.scoreList)
 
     def increment(self,round):
         if round == "A":
@@ -142,6 +146,21 @@ class Tennis(Sports):
             if self.set_won_B < 2:
                 return print(f"Set {self.current_set} has been won by {self.player2} and Set {self.current_set + 1} is starting ")
 
+            self.set_won_A +=1
+            self.scoreList.append({self.current_set:[self.score_A,self.score_B]})
+            self.current_set +=1
+            self.score_A = 0
+            self.score_B =0
+            if self.set_won_A <2:
+                return print(f" Set Completed !! Next Set Starting ...")
+        elif self.score_B >= 4 and (self.score_B -self.score_A >= 2):
+            self.set_won_B +=1
+            self.scoreList.append({self.current_set:[self.score_A,self.score_B]})
+            self.current_set +=1
+            self.score_A = 0
+            self.score_B =0
+            if self.set_won_B <2:
+                return print(f" Set Completed !! Next Set Starting ...")
         else:
             pass
 
@@ -154,6 +173,9 @@ class Tennis(Sports):
             pass
 
 class Table_Tennis(Sports):
+
+    def view_score(self):
+        pass
     
     def increment(self):
         pass
@@ -174,7 +196,7 @@ def main_func():
 
             print("\nSelect Game 👇")
             
-            game = input("\n1. Badminton\n2. Tennis\n3. Table Tennis:\n")
+            game = input("\n1. Badminton\n2. Tennis\n3. Table Tennis:\n4. Exit ")
 
             play_game = None
 
@@ -209,9 +231,12 @@ def main_func():
                 x=play_game.is_overallwinner()
 
                 if x:
-                    print(f"{x} won the game .")
+                    print("---------")
+                    print(f"TEAM {x} won the game .")
+                    print("---------------")
+                    play_game.view_score()
                     break
-            break
+
 
         else:
             break 

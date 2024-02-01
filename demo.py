@@ -1,5 +1,5 @@
 # this is done by ved nande
-# gandu ved
+# gandu ved hai 
 class Sports:
     def __init__(self,player1,player2):
         

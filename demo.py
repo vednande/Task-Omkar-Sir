@@ -1,5 +1,4 @@
-# this is done by ved nande
-# gandu ved hai 
+
 class Sports:
     def __init__(self,player1,player2):
         
@@ -177,12 +176,12 @@ class Tennis(Sports):
             if self.score_A > self.score_B:
                 # self.set_won_A += 1
                 self.game_won_A += 1
-                print(f"\n is_setwinner GAME POINT || A = {self.game_won_A} || B = {self.game_won_B}\n")
+                print(f"\n GAME POINT || A = {self.game_won_A} || B = {self.game_won_B}\n")
                 
             elif self.score_B > self.score_A:
                 # self.set_won_B += 1
                 self.game_won_B += 1
-                print(f"\n is_setwinner GAME POINT || A = {self.game_won_A} || B = {self.game_won_B}\n")
+                print(f"\n  GAME POINT || A = {self.game_won_A} || B = {self.game_won_B}\n")
 
             # self.scoreList.append([self.game_won_A, self.game_won_B, self.set_won_A, self.set_won_B])
             # self.game_won_A = 0
@@ -216,8 +215,6 @@ class Tennis(Sports):
 
 
 class Table_Tennis(Sports):
-
-
 
     def view_score(self):
         print("Score Board  ")

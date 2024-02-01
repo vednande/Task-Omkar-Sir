@@ -45,9 +45,9 @@ class Badminton(Sports):
         print("(SET No : [score of A, Score of B])\n")
         print(self.scoreList)
     def increment(self,round):
-        if round == "A" or "a" :
+        if round == "A":
             self.score_A +=1
-        elif round == "B" or "b":
+        elif round == "B":
             self.score_B +=1
         else :
             return (print("Invalid Input"))

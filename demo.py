@@ -195,21 +195,29 @@ class Table_Tennis(Sports):
 
         print(f"A = {self.score_A} and B = {self.score_B}")
 
-        def is_setwinner(self):
-            '''Determines the winner of a set in table tennis.'''
+    def is_setwinner(self):
+        '''Determines the winner of a set in table tennis.'''
 
-        if (self._A >= 11 and (self._A - self._B >= 2)):
-        self.set_A += 1
-        self._A = 0
-        self._B = 0
-        if self.set_A < 4:
-            return print(f"{self.current_set} won by {self.player1}.")
-    else:
-        self.set_B += 1
-        self._A = 0
-        self._B = 0
-        if self.set_B < 4:
-            return print(f"{self.current_set} won by {self.player2}.")
+        if (self.score_A >= 11 and (self.score_A - self.score_B >= 2)):
+            self.set_won_A += 1
+            self.score_A = 0
+            self.score_B = 0
+            if self.set_won_A < 4:
+                return print(
+                    f"Game {self.current_set} won by {self.player1}. Game {self.current_set + 1} is now starting."
+                )
+
+        elif self.score_B >= 11 and (self.score_B - self.score_A >= 2):
+            self.set_won_B += 1
+            self.score_A = 0
+            self.score_B = 0
+            if self.set_won_B < 4:
+                return print(
+                    f"Game {self.current_set} won by {self.player2}. Game {self.current_set + 1} is now starting."
+                )
+
+        else:
+            pass
 
     def is_overallwinner(self):
         if self.set_won_A == 2:

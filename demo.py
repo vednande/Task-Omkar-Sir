@@ -5,11 +5,19 @@ class Sports:
         
         self.player1=player1
         self.player2=player2
-        self.score_A=0
-        self.score_B=0
-        self.set_won_A =0
-        self.set_won_B =0
-        self.current_set=1
+
+        self.score_A = 0
+        self.score_B = 0
+
+        self.set_won_A = 0
+        self.set_won_B = 0
+
+        self.game_won_A = 0
+        self.game_won_B = 0
+
+        self.current_game = 0
+
+        self.current_set = 1
 
         self.scoreList=[]
         
@@ -77,7 +85,9 @@ class Badminton(Sports):
         
 
 
-
+'''
+    VED NANDE CODE GOES HERE 👇
+'''
 class Tennis(Sports):
 
     def increment(self,round):
@@ -92,18 +102,44 @@ class Tennis(Sports):
 
     def is_setwinner(self):
         if (self.score_A >= 4 and (self.score_A -self.score_B >= 2)) :
-            self.set_won_A +=1
-            # self.scoreList.append({set})
+            # self.set_won_A +=1
+            self.game_won_A +=1
+
+            print(f"GAME STATUS ===> A = {self.game_won_A} and B = {self.game_won_B}")
+
             self.score_A = 0
             self.score_B =0
-            if self.set_won_A <2:
-                return print(f"set {self.current_set} has been won by {self.player1} and set {self.current_set + 1} is now starting ")
+
+            self.current_game +=1
+
+            if self.current_game < 6:
+
+                if self.game_won_A == 3 and self.game_won_B == 3:
+                    return print(f"game {self.current_game} has been won by {self.player1} and game {self.current_game + 1} is now starting ")
+
+                return print(f"game {self.current_game} has been won by {self.player1} and game {self.current_game + 1} is now starting ")
+
+
+            if self.set_won_A < 2:
+                return print(f"set {self.current_set} has been won by {self.player1} and game {self.current_set + 1} is now starting ")
         
         elif self.score_B >= 4 and (self.score_B -self.score_A >= 2):
-            self.set_won_B +=1
+            # self.set_won_B +=1
+            self.game_won_B +=1
             self.score_A = 0
             self.score_B =0
-            if self.set_won_B <2:
+
+            self.current_game +=1
+
+            if self.current_game < 6:
+                if self.game_won_A == 3 and self.game_won_B == 3:
+                    return print(f"game {self.current_game} has been won by {self.player2} and game {self.current_game + 1} is now starting ")
+
+                return print(f"game {self.current_game} has been won by {self.player2} and game {self.current_game + 1} is now starting ")
+
+            self.current_game +=1
+
+            if self.set_won_B < 2:
                 return print(f"Set {self.current_set} has been won by {self.player2} and Set {self.current_set + 1} is starting ")
 
         else:
@@ -161,7 +197,7 @@ def main_func():
                 print("Invalid Choice")
 
             # calling toss 
-            toss=input("\nWho won the toss(A/B)")
+            toss=input("\nWho won the toss(A/B): ")
             play_game.toss(toss)
 
             while True:
